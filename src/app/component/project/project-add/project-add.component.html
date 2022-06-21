@@ -1,0 +1,46 @@
+<h3>Add Project</h3>
+<form clrForm *ngIf="projectForm" [formGroup]="projectForm" (ngSubmit)="addProject()">
+    <clr-input-container>
+        <label>Project Name</label>
+        <input clrInput formControlName="name" />
+        <clr-control-error>Name is required
+        </clr-control-error>
+    </clr-input-container>
+    <clr-textarea-container>
+        <label>Description</label>
+        <textarea clrTextarea formControlName="description"></textarea>
+    </clr-textarea-container>
+    <clr-radio-container clrInline>
+        <label>Priority</label>
+        <clr-radio-wrapper>
+            <input type="radio" value="low" clrRadio formControlName="priority" />
+            <label>Low</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+            <input type="radio" value="medium" clrRadio formControlName="priority" />
+            <label>Medium</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+            <input type="radio" value="high" clrRadio formControlName="priority" />
+            <label>High</label>
+        </clr-radio-wrapper>
+        <clr-control-error>Priority is required
+        </clr-control-error>
+    </clr-radio-container>
+
+    <clr-select-container>
+        <label>Category</label>
+        <select clrSelect formControlName="category">
+            <option value="Developpment">Developpment</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Security">Security
+            </option>
+        </select>
+        <clr-control-error>Category is required
+        </clr-control-error>
+    </clr-select-container>
+    <button class="btn btn-primary" type="submit">
+        Create
+    </button>
+    <button class="btn" type="button" (click)="formClose.emit()">Cancel</button>
+</form>

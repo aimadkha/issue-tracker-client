@@ -1,0 +1,30 @@
+<ng-container *ngIf="showReportProject === false">
+
+    <button class="btn btn-primary" (click)="showReportProject = true">Add new Project</button>
+    <clr-datagrid>
+        <clr-dg-column [clrDgField]="'issueNo'" [clrDgColType]="'number'">Project number</clr-dg-column>
+        <clr-dg-column [clrDgField]="'category'">Category</clr-dg-column>
+        <clr-dg-column [clrDgField]="'name'">Title</clr-dg-column>
+        <clr-dg-column [clrDgField]="'description'">Description
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'priority'">Priority
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'edit'">Control
+        </clr-dg-column>
+        <clr-dg-row *clrDgItems="let project of projects; let i = index">
+            <clr-dg-cell>{{i+1}}</clr-dg-cell>
+            <clr-dg-cell>{{project.category}}</clr-dg-cell>
+            <clr-dg-cell>{{project.name}}</clr-dg-cell>
+            <clr-dg-cell>{{project.description}}</clr-dg-cell>
+            <clr-dg-cell>
+                <span class="label" [class.label-danger]="project.priority === 'high'">{{project.priority}}</span>
+            </clr-dg-cell>
+            <clr-dg-cell>
+                <span><button  class="btn btn-primary btn-sm">Edit</button></span>
+                <span><button (click)="deleteProject(project.project_id)" class="btn btn-danger btn-sm">Delete</button></span>
+            </clr-dg-cell>
+        </clr-dg-row>
+        <clr-dg-footer>{{projects.length}} project</clr-dg-footer>
+    </clr-datagrid>
+</ng-container>
+<app-project-add *ngIf="showReportProject == true" (formClose)="onCloseReport()"></app-project-add>
