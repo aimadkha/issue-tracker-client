@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
+import { Issue } from '../common/issue';
 import { Observable } from 'rxjs';
 import { Project } from './../common/project';
 
@@ -28,5 +29,17 @@ export class ProjectService {
 
   deleteProject(id: number): Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
+  getproject(id: number): Observable<Object>{
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
+  updateProject(id: number, project: Project): Observable<Object>{
+    return this.http.put(`${this.baseUrl}/${id}`, project);
+  }
+
+  addIssueToProject(projectId: number, issue: Issue): Observable<Object>{
+    return this.http.post(`${this.baseUrl}/${projectId}`, issue);
   }
 }

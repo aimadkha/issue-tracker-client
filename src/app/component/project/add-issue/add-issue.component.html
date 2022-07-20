@@ -1,9 +1,15 @@
-<h3>Edit Project</h3>
-<form clrForm *ngIf="projectForm" [formGroup]="projectForm" (ngSubmit)="updateProject()">
+<form clrForm *ngIf="projectForm" [formGroup]="projectForm">
     <clr-input-container>
         <label>Project Name</label>
-        <input clrInput formControlName="name" />
-        <clr-control-error>Name is required
+        <input clrInput name="name" formControlName="name" type="text" Disabled />
+    </clr-input-container>
+</form>
+<h3>Add an issue</h3>
+<form clrForm *ngIf="issueForm" [formGroup]="issueForm" (ngSubmit)="addIssueToProject()">
+    <clr-input-container>
+        <label>Title</label>
+        <input clrInput formControlName="title" />
+        <clr-control-error>Title is required
         </clr-control-error>
     </clr-input-container>
     <clr-textarea-container>
@@ -17,30 +23,25 @@
             <label>Low</label>
         </clr-radio-wrapper>
         <clr-radio-wrapper>
-            <input type="radio" value="medium" clrRadio formControlName="priority" />
-            <label>Medium</label>
-        </clr-radio-wrapper>
-        <clr-radio-wrapper>
             <input type="radio" value="high" clrRadio formControlName="priority" />
             <label>High</label>
         </clr-radio-wrapper>
         <clr-control-error>Priority is required
         </clr-control-error>
     </clr-radio-container>
-
     <clr-select-container>
-        <label>Category</label>
-        <select clrSelect formControlName="category">
-            <option value="Developpment">Developpment</option>
-            <option value="DevOps">DevOps</option>
-            <option value="Security">Security
+        <label>Type</label>
+        <select clrSelect formControlName="type">
+            <option value="Feature">Feature</option>
+            <option value="Bug">Bug</option>
+            <option value="Documentation">Documentation
             </option>
         </select>
-        <clr-control-error>Category is required
+        <clr-control-error>Type is required
         </clr-control-error>
     </clr-select-container>
     <button class="btn btn-primary" type="submit">
-        Update
+        Create
     </button>
     <button class="btn" type="button" (click)="formClose.emit()">Cancel</button>
 </form>

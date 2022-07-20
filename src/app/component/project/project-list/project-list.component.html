@@ -20,8 +20,10 @@
                 <span class="label" [class.label-danger]="project.priority === 'high'">{{project.priority}}</span>
             </clr-dg-cell>
             <clr-dg-cell>
-                <span><button  class="btn btn-primary btn-sm">Edit</button></span>
-                <span><button (click)="deleteProject(project.project_id)" class="btn btn-danger btn-sm">Delete</button></span>
+                <a class="nav-link" href="dashboard/project/{{project.project_id}}"><button  class="btn btn-primary btn-sm">Edit</button></a>
+                <button (click)="deleteProject(project.project_id)" class="btn btn-danger btn-sm">Delete</button>
+                 <a class="nav-link" href="dashboard/project/issue/{{project.project_id}}"><button class="btn btn-primary btn-sm">Issue</button></a>
+
             </clr-dg-cell>
         </clr-dg-row>
         <clr-dg-footer>{{projects.length}} project</clr-dg-footer>
